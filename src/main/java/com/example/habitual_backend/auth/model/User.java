@@ -33,10 +33,11 @@ public class User {
         
     }
 
-    public User(String name, String email, String password){
+    public User(String name, String email, String password, LocalDateTime createdAt){
         this.name = name;
         this.email = email;
         this.password = password;
+        this.createdAt = createdAt;
     }
 
     public Long getId() {
