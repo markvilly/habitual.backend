@@ -34,4 +34,8 @@ public class ProductService {
     public List<Product> getPopularProducts(){
         return productRepo.findByPopularTrue();
     }
+
+    public List<Product> searchProducts(String q, Long categoryId, Double minPrice, Double maxPrice){
+        return productRepo.searchProducts(q, categoryId, minPrice, maxPrice);
+    }
 }

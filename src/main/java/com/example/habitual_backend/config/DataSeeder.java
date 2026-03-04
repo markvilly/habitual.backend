@@ -7,19 +7,20 @@ import com.example.habitual_backend.product.model.Category;
 import com.example.habitual_backend.product.model.Product;
 import com.example.habitual_backend.product.repo.CategoryRepository;
 import com.example.habitual_backend.product.repo.ProductRepository;
+import com.example.habitual_backend.deal.model.Deal;
+import com.example.habitual_backend.deal.repo.DealRepository;
 
 @Component
 public class DataSeeder implements CommandLineRunner {
     
     private final CategoryRepository categoryRepo;
     private final ProductRepository productRepo;
+    private final DealRepository dealRepo;
 
-
-    public DataSeeder(CategoryRepository categoryRepo, ProductRepository productRepo){
-
+    public DataSeeder(CategoryRepository categoryRepo, ProductRepository productRepo, DealRepository dealRepo){
         this.categoryRepo = categoryRepo;
         this.productRepo = productRepo;
-        
+        this.dealRepo = dealRepo;
     }
 
     @Override
@@ -44,6 +45,15 @@ public class DataSeeder implements CommandLineRunner {
             productRepo.save(prod4);
             productRepo.save(prod5);
             productRepo.save(prod6);
+
+            if (dealRepo.count() == 0) {
+                Deal deal1 = new Deal(null, prod1, 750.0, true);
+                Deal deal2 = new Deal(null, prod4, 30.0, true);
+                Deal deal3 = new Deal(null, prod5, 120.0, true);
+                dealRepo.save(deal1);
+                dealRepo.save(deal2);
+                dealRepo.save(deal3);
+            }
         }
     }
 }
