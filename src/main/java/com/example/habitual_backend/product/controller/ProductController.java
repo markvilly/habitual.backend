@@ -3,7 +3,7 @@ package com.example.habitual_backend.product.controller;
 
 import java.util.List;
 
-import org.springframework.http.RequestEntity;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,5 +37,13 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable Long categoryId){
         return ResponseEntity.ok(productService.getProductsByCategory(categoryId));
     }
-    
+    @GetMapping("/trending")
+    public ResponseEntity<List<Product>> getTrendingProducts(){
+        return ResponseEntity.ok(productService.getTrendingProducts());
+    }
+
+    @GetMapping("/popular")
+    public ResponseEntity<List<Product>> getPopularProducts(){
+        return ResponseEntity.ok(productService.getPopularProducts());
+    }
 }

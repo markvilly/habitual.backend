@@ -25,7 +25,13 @@ public class ProductService {
     }
     
     public List<Product> getProductsByCategory(Long categoryId){
-        return productRepo.findByCategory(categoryId);
+        return productRepo.findByCategoryId(categoryId);
     }
-    
+    public List<Product> getTrendingProducts(){
+        return productRepo.findByTrendingTrue();
+    }
+
+    public List<Product> getPopularProducts(){
+        return productRepo.findByPopularTrue();
+    }
 }
