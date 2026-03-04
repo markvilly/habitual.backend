@@ -24,9 +24,14 @@ public class UserService {
             return new AuthResponse("", 0L, "", "Email already exists");
         }
         User user = new User(req.getName(), req.getEmail(), req.getPassword(), LocalDateTime.now());
+        if (req.getPhoneNumber() != null) {
+            user.setPhoneNumber(req.getPhoneNumber());
+        }
+        if (req.getInterests() != null && !req.getInterests().isEmpty()) {
+            user.setInterests(String.join(",", req.getInterests()));
+        }
         userRepository.save(user);
         return new AuthResponse(user.getName(), user.getId(), user.getEmail(), "User registered successfully");
-
     }
 
     public AuthResponse login(LoginRequest req){
