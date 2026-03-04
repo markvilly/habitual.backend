@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface ProductRepository extends JpaRepository<Product, Long>{
-    List<Product> findByCategoryId(Long categoryId);
+    @Query("SELECT p FROM Product p WHERE p.category.id = :categoryId")
+    List<Product> findByCategoryId(@Param("categoryId") Long categoryId);
+    
     List<Product> findByTrendingTrue();
     List<Product> findByPopularTrue();
 
