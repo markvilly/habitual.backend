@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.example.habitual_backend.product.model.Product;
 import com.example.habitual_backend.product.repo.ProductRepository;
 
+import io.micrometer.common.lang.NonNull;
+
 @Service
 public class ProductService {
     
@@ -20,7 +22,7 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public Product getProductById(Long id){
+    public Product getProductById(@NonNull Long id){
         return productRepo.findById(id).orElseThrow(()-> new RuntimeException("Product not found"));
     }
     

@@ -2,6 +2,7 @@ package com.example.habitual_backend.product.service;
 
 import java.util.List;
 
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.example.habitual_backend.product.model.Category;
@@ -20,7 +21,7 @@ public class CategoryService {
         return categoryRepo.findAll();
     }
 
-    public Category getCategoryById(Long id){
+    public Category getCategoryById(@NonNull Long id){
         return categoryRepo.findById(id).orElseThrow(()-> new RuntimeException("Category not found"));
     }
 
