@@ -27,17 +27,22 @@ public class DataSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         
         if(categoryRepo.count() == 0 && productRepo.count() == 0){
-            Category cat1 = new Category(null, "Electronics", "Electronics", "https://example.com/electronics.jpg");
-            Category cat2 = new Category(null, "Books", "Books", "https://example.com/books.jpg");
+            Category cat1 = new Category(null, "Music", "Music", "/Music 02.png");
+            Category cat2 = new Category(null, "Gaming", "Gaming", "/Electronics 01.png");
+            Category cat3 = new Category(null, "Reading", "Reading", "/Image.png");
+            Category cat4 = new Category(null, "Fashion", "Fashion", "/Image.png");
             categoryRepo.save(cat1);
             categoryRepo.save(cat2);
+            categoryRepo.save(cat3);
+            categoryRepo.save(cat4);
 
-            Product prod1 = new Product(null, "Smartphone", "High-end smartphone", "https://example.com/smartphone.jpg", 800, true, true, cat1);
-            Product prod2 = new Product(null, "Sci-Fi Novel", "Bestselling sci-fi novel", "https://example.com/scifi.jpg", 20, true, true, cat2);
-            Product prod3 = new Product(null, "Laptop", "Powerful laptop", "https://example.com/laptop.jpg", 1500, true, true, cat1);
-            Product prod4 = new Product(null, "Data Science Book", "Learn data science", "https://example.com/datascience.jpg", 45, true, true, cat2);
-            Product prod5 = new Product(null, "Headphones", "Noise cancelling", "https://example.com/headphones.jpg", 150, true, true, cat1);
-            Product prod6 = new Product(null, "History Book", "World history", "https://example.com/history.jpg", 30, true, true, cat2);
+            Product prod1 = new Product(null, "\"Awaken, My Love!\"", "Childish Gambino Album", "/Music 02.png", 39.99, true, true, cat1);
+            Product prod2 = new Product(null, "Dark Lane Demo Tapes", "Drake Mixtape", "/Music 03.png", 32.99, true, true, cat1);
+            Product prod3 = new Product(null, "4 Your Eyez Only", "J. Cole Album", "/Music 04.png", 28.99, true, true, cat1);
+            
+            Product prod4 = new Product(null, "Oculus Rift VR Headset", "Virtual reality headset", "/Electronics 02.png", 299.99, true, true, cat2);
+            Product prod5 = new Product(null, "Dell 49\" Ultrawide Screen", "Ultrawide screen monitor", "/Electronics 01.png", 1199.99, true, true, cat2);
+            Product prod6 = new Product(null, "Xbox One Elite Series 2 Controller", "Elite gaming controller", "/Image.png", 79.99, true, true, cat2);
             
             productRepo.save(prod1);
             productRepo.save(prod2);
@@ -47,12 +52,10 @@ public class DataSeeder implements CommandLineRunner {
             productRepo.save(prod6);
 
             if (dealRepo.count() == 0) {
-                Deal deal1 = new Deal(null, prod1, 750.0, true);
-                Deal deal2 = new Deal(null, prod4, 30.0, true);
-                Deal deal3 = new Deal(null, prod5, 120.0, true);
+                Deal deal1 = new Deal(null, prod1, 19.99, true);
+                Deal deal2 = new Deal(null, prod6, 59.99, true);
                 dealRepo.save(deal1);
                 dealRepo.save(deal2);
-                dealRepo.save(deal3);
             }
         }
     }
